@@ -1,5 +1,7 @@
-JS Seed
+react pto
 ============
+
+## based off of the [js-seed project](https://github.com/megalithic/js-seed)
 
 A somewhat opinionated JS Seed/Starter Kit relying on Gulp + Browserify.
 A lot of this was born out of this [blog post](http://viget.com/extend/gulp-browserify-starter-faq).
