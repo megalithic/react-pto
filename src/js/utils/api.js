@@ -1,6 +1,7 @@
 var jq = require('jquery');
 
-var baseUrl = "http://localhost:8080/dirsearch";
+var mockUrl = "http://jsonplaceholder.typicode.com";
+var baseUrl = "http://192.168.1.82:8080/dirsearch";
 var API = {
   get: {
     versions: function(callback) {
@@ -26,6 +27,17 @@ var API = {
       }
     })
     .done(callback);
+  },
+  // make mock REST calls to JSONPlaceholder
+  mock: {
+    search: function(params, callback) {
+      jq.ajax({
+        url: mockUrl + "/posts",
+        type: "GET",
+        contentType: "application/json"
+      })
+      .done(callback);
+    }
   }
 };
 
