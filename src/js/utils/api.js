@@ -11,7 +11,8 @@ var API = {
         xhrFields: {
           withCredentials: true
         }
-      }).done(callback);
+      })
+      .done(callback);
     }
   },
   search: function(params, callback) {
@@ -23,7 +24,8 @@ var API = {
       xhrFields: {
         withCredentials: true
       }
-    }).done(callback);
+    })
+    .done(callback);
   }
 };
 

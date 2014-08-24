@@ -46,7 +46,7 @@ var App = React.createClass({
           <h1>MINI EST</h1>
           <nav className="pure-menu pure-menu-open pure-menu-horizontal">
             <ul>
-              <li><Link to="home">Home</Link></li>
+              <li><Link to="search">Search</Link></li>
               <li><Link to="about">About</Link></li>
             </ul>
           </nav>
