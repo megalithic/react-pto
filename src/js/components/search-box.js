@@ -17,6 +17,7 @@ var SearchBox = React.createClass({
     if(evt.charCode === 13) {
       this.setState({query: { text: evt.target.value }}, function() {
         API.search({query: { text: this.state.query.text }}, function(res) {
+          this.props.valueLink = res;
           console.log(res);
         }.bind(this));
       });
