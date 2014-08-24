@@ -2,6 +2,7 @@
 
 var React = require('react');
 var jq = require('jquery');
+var API = require('../utils/api');
 
 var Versions = React.createClass({
   getInitialState: function() {
@@ -15,14 +16,7 @@ var Versions = React.createClass({
   },
 
   componentDidMount: function() {
-    jq.ajax({
-      url: this.props.url,
-      type: 'GET',
-      dataType: "jsonp",
-      xhrFields: {
-        withCredentials: true
-      }
-    }).then(function(res) {
+    API.get.versions(function(res) {
       var versions = {};
       res.versions.forEach(function(item, i) {
         versions[item.product.toLowerCase()] = item.name;

@@ -43,12 +43,11 @@ var App = React.createClass({
     return (
       <div className={klass}>
         <header className="header">
-          <h1>JS-Seed</h1>
+          <h1>MINI EST</h1>
           <nav className="pure-menu pure-menu-open pure-menu-horizontal">
             <ul>
               <li><Link to="home">Home</Link></li>
               <li><Link to="about">About</Link></li>
-              {this.renderRightNav()}
             </ul>
           </nav>
         </header>
@@ -58,11 +57,6 @@ var App = React.createClass({
         </section>
       </div>
     );
-  },
-  renderRightNav: function() {
-    return (this.state.auth.authenticated) ?
-      <li><a href="#" title="Logout" className="pure-button pure-button-primary" onClick={this.logout}>Logout</a></li> :
-      <li><a href="#" title="Sign In" className="pure-button pure-button-primary" onClick={this.signIn}>Sign in</a></li>;
   }
 });
 

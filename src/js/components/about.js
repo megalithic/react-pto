@@ -7,7 +7,8 @@ var About = React.createClass({
     return (
       <article>
         <h2 className="content-subhead">{this.props.name}</h2>
-        <Versions url="http://192.168.1.82:8080/dirsearch" />
+        <p>This site is meant to be a POC to show how any UI can be put atop the EST API to facilitate patent searching.</p>
+        <Versions />
       </article>
     );
   }
