@@ -3,6 +3,12 @@ react pto
 
 ## based off of the [js-seed project](https://github.com/megalithic/js-seed)
 
+Of note, this app requires certain services to run, you should know what they
+are, if you have worked on a similar app. There are currently CORS issues to
+resolve for certain API calls.
+
+---
+
 A somewhat opinionated JS Seed/Starter Kit relying on Gulp + Browserify.
 A lot of this was born out of this [blog post](http://viget.com/extend/gulp-browserify-starter-faq).
 Please refer to it for more info on the libs used for creating this lil slice of JS development heaven.

@@ -29,7 +29,7 @@ var SearchBox = React.createClass({
     return (
       <form className="pure-form pure-form-stacked">
         <fieldset>
-          <legend>Please provide a non BRS-parsed search query below</legend>
+          <legend><i className="fa fa-exclamation-triangle"></i> <em>Queries entered below will not be BRS parsed.</em></legend>
           <div className="pure-g">
             <div className="pure-u-1">
               <input id="search" className="pure-input-1" type="search" onKeyPress={this.handleSubmit} />
