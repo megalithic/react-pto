@@ -8,11 +8,14 @@ var Home = React.createClass({
   getInitialState: function() {
     return { results: [] };
   },
+  handleResults: function(results) {
+    console.debug("we haev results!", results);
+  },
   render: function() {
     return (
       <article>
         <h2 className="content-subhead">{this.props.name}</h2>
-        <SearchBox valueLink={this.linkState('results')} />
+        <SearchBox updateResults={this.handleResults} />
       </article>
     );
   }
