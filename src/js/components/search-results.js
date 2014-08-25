@@ -16,7 +16,7 @@ var SearchResults = React.createClass({
 
   render: function() {
     var results = this.searchResults().map(function(r, i) {
-      return (<div key={i}>{r.title}</div>);
+      return (<SearchResult result={r} />);
     });
 
     return (

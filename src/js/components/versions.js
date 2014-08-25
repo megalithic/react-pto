@@ -36,7 +36,7 @@ var Versions = React.createClass({
   render: function() {
     var v = this.state.versions;
     return (
-      <div className="pure-menu pure-menu-open">
+      <div className="pure-menu pure-menu-open versions">
         <a className="pure-menu-heading">External Services:</a>
         <ul>
           <li><a><strong>API:</strong> {v.api}</a></li>

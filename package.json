@@ -29,16 +29,15 @@
   "jest": {
     "scriptPreprocessor": "./test/helpers/preprocessor.js",
     "unmockedModulePathPatterns": [
-      "./node_modules/react"
+      "react",
+      "react-router"
     ],
     "testDirectoryName": "test",
     "testPathIgnorePatterns": [
       "./node_modules/",
       "./test/helpers/"
     ],
-    "moduleFileExtensions": [
-      "js"
-    ]
+    "moduleFileExtensions": [ "js" ]
   },
   "devDependencies": {
     "browser-sync": "~0.8.2",

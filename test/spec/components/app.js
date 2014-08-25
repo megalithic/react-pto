@@ -9,7 +9,7 @@ describe('Main', function () {
     React = require('react/addons');
     TestUtils = React.addons.TestUtils;
     App = require('../../../src/js/components/app.js');
-    component = TestUtils.renderIntoDocument(App());
+    component = TestUtils.renderIntoDocument(<App />);
   });
 
   it('should create a new instance of App', function () {

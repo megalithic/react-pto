@@ -6,9 +6,13 @@ var _ = require("underscore");
 
 var SearchResult = React.createClass({
   render: function() {
+    var r = this.props.result;
     return (
-      <div className="result">
-      </div>
+      <dl className="result">
+        <dt>{r.title}</dt>
+        <dd className="metadata"></dd>
+        <dd>{r.body}</dd>
+      </dl>
     );
   }
 });

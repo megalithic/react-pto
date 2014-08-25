@@ -13,7 +13,7 @@ var Home = React.createClass({
   handleResults: function(data) {
     this.setState({results: data});
     jq('html, body').animate({
-      scrollTop: jq(".results").offset().top
+      scrollTop: jq(".search-box").offset().top
     }, 500);
   },
   render: function() {
