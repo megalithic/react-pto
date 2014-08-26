@@ -1,3 +1,11 @@
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
 body {
   -webkit-font-smoothing: antialiased;
   background:#fff;
@@ -73,12 +81,6 @@ body {
           padding:0;
         }
       }
-      form {
-        .queryText {
-          width:99%; // hack! please fix
-          padding: .4em .6em .45em;
-        }
-      }
     }
   }
 
@@ -99,3 +101,6 @@ body {
     background: rgba(0,0,0,.05) !important;
   }
 }
+
+@import "./search-results";
+@import "./search-box";

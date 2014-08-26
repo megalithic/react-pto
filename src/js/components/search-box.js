@@ -27,6 +27,10 @@ var SearchBox = React.createClass({
     });
   },
 
+  componentDidMount: function() {
+    this.refs.queryText.getDOMNode().focus();
+  },
+
   render: function() {
     return (
       <div className="search-box">
@@ -35,7 +39,7 @@ var SearchBox = React.createClass({
             <legend><i className="fa fa-exclamation-triangle"></i> <em>Queries entered below will not be BRS parsed.</em></legend>
             <div className="pure-g">
               <div className="pure-u-md-4-5">
-                <input ref="queryText" className="queryText pure-input-1" type="text" placeholder="Enter a search query.." required="true" />
+                <input ref="queryText" className="queryText pure-input-1" type="text" placeholder="Enter a search query.." required />
               </div>
               <div className="pure-u-md-1-5">
                 <button type="submit" className="pure-button pure-input-1 pure-button-primary">Search</button>

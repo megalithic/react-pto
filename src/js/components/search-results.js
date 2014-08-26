@@ -6,8 +6,36 @@ var _ = require("underscore");
 var SearchResult = require("./search-result");
 
 var SearchResults = React.createClass({
+  getInitialState: function() {
+    return ({ active: false });
+  },
+
+  handleKeyPress: function(evt) {
+    if(this.isNavigationKey(evt.which)) {
+    }
+  },
+
+  isNavigationKey: function(keyCode) {
+    console.debug("key pressed", keyCode);
+    return true;
+  },
+
+  componentDidMount: function() {
+    window.addEventListener('keypress', this.handleKeyPress);
+  },
+
+  componentWillUnmount: function() {
+    window.removeEventListener('keypress', this.handleKeyPress);
+  },
+
   showResultsMessage: function() {
-    return _.isArray(this.props.valueLink.value) && this.props.valueLink.value.length === 0 ? "No results found." : "";
+    var message = "";
+    if(_.isArray(this.props.valueLink.value) && this.props.valueLink.value.length === 0) {
+      message = "No results found.";
+    } else if(_.isArray(this.props.valueLink.value) && this.props.valueLink.value.length > 0) {
+      message = "Found " + this.props.valueLink.value.length + " results.";
+    }
+    return message;
   },
 
   searchResults: function() {
@@ -16,12 +44,12 @@ var SearchResults = React.createClass({
 
   render: function() {
     var results = this.searchResults().map(function(r, i) {
-      return (<SearchResult result={r} />);
+      return (<SearchResult active={this.state.active} result={r} />);
     });
 
     return (
-      <div className="results">
-        {this.showResultsMessage()}
+      <div ref="searchResults" className="search-results">
+        <strong>{this.showResultsMessage()}</strong>
         {results}
       </div>
     );
