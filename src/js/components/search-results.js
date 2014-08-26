@@ -44,7 +44,7 @@ var SearchResults = React.createClass({
 
   render: function() {
     var results = this.searchResults().map(function(r, i) {
-      return (<SearchResult active={this.state.active} result={r} />);
+      return (<SearchResult result={r} />);
     });
 
     return (
