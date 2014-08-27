@@ -1,4 +1,9 @@
 .search-box {
+  .pure-g {
+    padding:1em;
+    background:#f5f5f5;
+    border:5px solid #f0f0f0;
+  }
   form {
     .queryText {
       width:99%; // hack! please fix
