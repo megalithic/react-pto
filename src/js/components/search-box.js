@@ -54,7 +54,7 @@ var SearchBox = React.createClass({
       <div className="search-box">
         <form className="pure-form" onSubmit={this.handleSubmit}>
           <fieldset>
-            <legend><i className="fa fa-bell-o"></i> <em>Queries entered below, will not be BRS parsed.</em></legend>
+            <legend><i className="fa fa-bell-o"></i> <em>Queries entered below, will not be visually parsed.</em></legend>
             <div className="pure-g">
               <div className="pure-u-md-4-5">
                 <input ref="queryText" className="queryText pure-input-1" type="text" placeholder="Enter a search query.." onKeyPress={this.handleKeyPress} />

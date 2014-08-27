@@ -57,8 +57,8 @@ var SearchResults = React.createClass({
   render: function() {
     if(helpers.isPresent(this.searchResults())) {
       var results = this.searchResults().map(function(r, i) {
-        return (<SearchResult result={r} />);
-      });
+        return (<SearchResult result={r} showDocument={this.props.showDocument} />);
+      }.bind(this));
     }
 
     return (

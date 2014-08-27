@@ -1,0 +1,32 @@
+.document-detail {
+  margin-top:3.5em;
+  .title {
+    text-transform:uppercase;
+    position: relative;
+    padding-right: 4px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  p {
+    font-weight:300;
+    font-size:95%;
+  }
+
+  &.document-detail-leave {
+    opacity: 0.01;
+    // transition: opacity .1s ease-in;
+  }
+
+  &.document-detail-leave.document-detail-leave-active {
+    opacity: 1;
+  }
+  &.document-detail-enter {
+    opacity: 1;
+    // transition: opacity .1s ease-in;
+  }
+
+  &.document-detail-enter.document-detail-enter-active {
+    opacity: 0.01;
+  }
+}

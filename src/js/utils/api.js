@@ -14,6 +14,17 @@ var API = {
         }
       })
       .done(callback);
+    },
+    document: function(documentId, callback) {
+      jq.ajax({
+        url: baseUrl + "/patents/" + documentId,
+        type: 'GET',
+        dataType: "jsonp",
+        xhrFields: {
+          withCredentials: true
+        }
+      })
+      .done(callback);
     }
   },
   search: function(params, callback) {

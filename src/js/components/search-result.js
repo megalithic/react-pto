@@ -7,15 +7,25 @@ var moment = require('moment');
 
 var SearchResult = React.createClass({
   getInitialState: function() {
-    return { resultIsFocused: false };
+    return {
+      resultIsFocused: false,
+      selectedDocument: null
+    };
   },
 
   toggleFocused: function() {
-    this.setState({ resultIsFocused: !this.state.resultIsFocused });
+    this.setState({
+      resultIsFocused: !this.state.resultIsFocused,
+      selectedDocument: this.refs.documentId
+    });
   },
 
   normalizedDocument: function(doc) {
     return doc;
+  },
+
+  handleClick: function(evt) {
+    this.props.showDocument(this.refs.documentId.getDOMNode().innerText);
   },
 
   render: function() {
@@ -31,11 +41,11 @@ var SearchResult = React.createClass({
     var r = this.normalizedDocument(this.props.result);
 
     return (
-      <dl className={focusedClass} onMouseEnter={this.toggleFocused} onMouseLeave={this.toggleFocused}>
+      <dl className={focusedClass} onMouseEnter={this.toggleFocused} onMouseLeave={this.toggleFocused} onClick={this.handleClick}>
         <dt className="title" title={r.inventionTitle} dangerouslySetInnerHTML={{__html: r.inventionTitle}} />
         <ReactCSSTransitionGroup transitionName="metadata">
           <dd className={metadataClass} key="1">
-            <p>{r.guid}</p>
+            <p ref="documentId">{r.guid}</p>
             <p>{moment(r.datePublished).format('L')}</p>
             <p>{r.type}</p>
           </dd>
