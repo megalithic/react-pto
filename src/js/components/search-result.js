@@ -32,7 +32,7 @@ var SearchResult = React.createClass({
 
     return (
       <dl className={focusedClass} onMouseEnter={this.toggleFocused} onMouseLeave={this.toggleFocused}>
-        <dt>{r.inventionTitle}</dt>
+        <dt className="title" title={r.inventionTitle} dangerouslySetInnerHTML={{__html: r.inventionTitle}} />
         <ReactCSSTransitionGroup transitionName="metadata">
           <dd className={metadataClass} key="1">
             <p>{r.guid}</p>
@@ -40,7 +40,7 @@ var SearchResult = React.createClass({
             <p>{r.type}</p>
           </dd>
         </ReactCSSTransitionGroup>
-        <dd>{r.inventors_short}</dd>
+        <dd className="inventors">{r.inventors_short}</dd>
         <dd className="claims" dangerouslySetInnerHTML={{__html: r.claimsHtml}} />
         <dd className="abstract" dangerouslySetInnerHTML={{__html: r.abstractHtml}} />
         <dd className="description" dangerouslySetInnerHTML={{__html: r.descriptionHtml}} />
