@@ -18,6 +18,9 @@
     &.focused {
       background:#efefef;
       cursor:pointer;
+      border-bottom:3px #ddd solid;
+      margin-bottom:-3px;
+      border-radius:0 0 5px 5px;
     }
   }
 

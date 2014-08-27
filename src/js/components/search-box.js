@@ -19,6 +19,10 @@ var SearchBox = React.createClass({
     return _.isUndefined(q) ? this.refs.queryText.getDOMNode().value : q;
   },
 
+  hasSearchResults: function() {
+    return _.isArray(this.props.valueLink.value) && this.props.valueLink.value.length > 0;
+  },
+
   handleSubmit: function(evt) {
     this.setState({executing: true});
     var queryText = this.queryText(evt.target.value);
@@ -34,6 +38,10 @@ var SearchBox = React.createClass({
     this.refs.queryText.getDOMNode().focus();
   },
 
+  handleKeyPress: function(evt) {
+    evt.stopPropagation();
+  },
+
   render: function() {
     var searchClass = cs({
       "fa": true,
@@ -47,7 +55,7 @@ var SearchBox = React.createClass({
             <legend><i className="fa fa-exclamation-triangle"></i> <em>Queries entered below will not be BRS parsed.</em></legend>
             <div className="pure-g">
               <div className="pure-u-md-4-5">
-                <input ref="queryText" className="queryText pure-input-1" type="text" placeholder="Enter a search query.." required />
+                <input ref="queryText" className="queryText pure-input-1" type="text" placeholder="Enter a search query.." required onKeyPress={this.handleKeyPress} />
               </div>
               <div className="pure-u-md-1-5">
                 <button type="submit" className="pure-button pure-input-1 pure-button-primary" title="Execute Search"><i className={searchClass}></i></button>

@@ -12,7 +12,8 @@ var Versions = React.createClass({
         api: "",
         solr: "",
         fe: ""
-      }
+      },
+      executing: false
     };
   },
 
@@ -31,26 +32,30 @@ var Versions = React.createClass({
             solr: versions["solr"]
           }
         });
+        setTimeout(function() {
+          this.setState({executing: false});
+        }.bind(this), 500);
       }
     }.bind(this));
   },
 
   render: function() {
     var v = this.state.versions;
-    var loadingVersions = function() {
-      if(this.state.executing) {
-        return (<li><a><strong>API:</strong> {v.api}</a></li><li><a><strong>SOLR:</strong> {v.solr}</a></li>);
-      } else {
-        return (<li><i className="fa fa-spinner fa-spin"></i> Loading</li>);
-      }
-    };
+    var versionsListing = "";
+    if(this.state.executing) {
+      versionsListing = <p><i className="fa fa-spinner fa-spin"></i> Loading</p>;
+    } else {
+      versionsListing =
+        <ul>
+          <li><strong>API:</strong> {v.api}</li>
+          <li><strong>SOLR:</strong> {v.solr}</li>
+        </ul>;
+    }
 
     return (
       <div className="pure-menu pure-menu-open versions">
         <a className="pure-menu-heading">External Services:</a>
-        <ul>
-          { loadingVersions() }
-        </ul>
+        { versionsListing }
       </div>
     );
   }

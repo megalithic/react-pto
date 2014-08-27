@@ -73,14 +73,6 @@ body {
           color: #888;
         }
       }
-      ul {
-        list-style:none;
-        padding:0;
-        li {
-          margin:0;
-          padding:0;
-        }
-      }
     }
   }
 
@@ -96,7 +88,7 @@ body {
     bottom: 0px;
     right:0;
     left:0;
-    max-height:19px;
+    max-height:40px;
     border-radius:0 !important;
     background: rgba(0,0,0,.05) !important;
   }
@@ -104,3 +96,4 @@ body {
 
 @import "./search-results";
 @import "./search-box";
+@import "./versions";

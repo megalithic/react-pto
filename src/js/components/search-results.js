@@ -6,6 +6,12 @@ var _ = require("underscore");
 var SearchResult = require("./search-result");
 
 var SearchResults = React.createClass({
+  allowedNavigationKeys: [
+    106, //j
+    107, //k
+    13, //enter
+  ],
+
   getInitialState: function() {
     return ({ active: false });
   },
@@ -16,12 +22,14 @@ var SearchResults = React.createClass({
   },
 
   isNavigationKey: function(keyCode) {
-    console.debug("key pressed", keyCode);
-    return true;
+    var keyCodePresent = _.contains(this.allowedNavigationKeys, keyCode);
+    return keyCodePresent;
   },
 
   componentDidMount: function() {
+    var searchResultsNode = this.getDOMNode();
     window.addEventListener('keypress', this.handleKeyPress);
+    searchResultsNode.focus();
   },
 
   componentWillUnmount: function() {

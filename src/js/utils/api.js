@@ -21,10 +21,12 @@ var API = {
       url: baseUrl + "/searches",
       type: "POST",
       data: JSON.stringify({"q": params.query.text}),
-      contentType: "application/json",
-      xhrFields: {
-        withCredentials: true
-      }
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      xhrFields: { withCredentials: false }
+      // contentType: "application/json",
     })
     .done(callback);
   },
