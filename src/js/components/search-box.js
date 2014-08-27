@@ -2,7 +2,7 @@
 
 var React = require('react');
 var API = require('../utils/api');
-var _ = require("underscore");
+var helpers = require("../utils/helpers");
 var cs = React.addons.classSet;
 
 var SearchBox = React.createClass({
@@ -16,22 +16,24 @@ var SearchBox = React.createClass({
   },
 
   queryText: function(q) {
-    return _.isUndefined(q) ? this.refs.queryText.getDOMNode().value : q;
+    return helpers.isEmpty(q) ? this.refs.queryText.getDOMNode().value : q;
   },
 
   hasSearchResults: function() {
-    return _.isArray(this.props.valueLink.value) && this.props.valueLink.value.length > 0;
+    return Array.isArray(this.props.valueLink.value) && this.props.valueLink.value.length > 0;
   },
 
   handleSubmit: function(evt) {
-    this.setState({executing: true});
     var queryText = this.queryText(evt.target.value);
-    this.setState({query: { text: queryText }}, function() {
-      API.search({query: { text: this.state.query.text }}, function(res) {
-        this.props.updateResults(res);
-        this.setState({executing: false});
-      }.bind(this));
-    });
+    if(helpers.isPresent(queryText)) {
+      this.setState({executing: true});
+      this.setState({query: { text: queryText }}, function() {
+        API.search({query: { text: this.state.query.text }}, function(res) {
+          this.props.updateResults(res);
+          this.setState({executing: false});
+        }.bind(this));
+      });
+    }
   },
 
   componentDidMount: function() {
@@ -52,10 +54,10 @@ var SearchBox = React.createClass({
       <div className="search-box">
         <form className="pure-form" onSubmit={this.handleSubmit}>
           <fieldset>
-            <legend><i className="fa fa-exclamation-triangle"></i> <em>Queries entered below will not be BRS parsed.</em></legend>
+            <legend><i className="fa fa-bell-o"></i> <em>Queries entered below, will not be BRS parsed.</em></legend>
             <div className="pure-g">
               <div className="pure-u-md-4-5">
-                <input ref="queryText" className="queryText pure-input-1" type="text" placeholder="Enter a search query.." required onKeyPress={this.handleKeyPress} />
+                <input ref="queryText" className="queryText pure-input-1" type="text" placeholder="Enter a search query.." onKeyPress={this.handleKeyPress} />
               </div>
               <div className="pure-u-md-1-5">
                 <button type="submit" className="pure-button pure-input-1 pure-button-primary" title="Execute Search"><i className={searchClass}></i></button>

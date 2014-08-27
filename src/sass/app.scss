@@ -1,3 +1,5 @@
+@import "./variables";
+
 html {
   box-sizing: border-box;
 }
@@ -39,7 +41,8 @@ body {
               &.active {
                 color:#222;
                 &::before {
-                  content: "\2605";
+                  font: $fontawesome;
+                  content: "\f101";
                   display:inline-block;
                   color:#ccc;
                   position:relative;
