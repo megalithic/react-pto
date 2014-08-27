@@ -5,6 +5,10 @@ React PTO
 
 ***Please refer to the aforementioned project above for setup notes***
 
+For the lazy (TL;DR): `npm install`
+
 This app requires certain services to run, you should know what they
-are, if you have worked on a similar app. There are currently CORS issues to
-resolve for certain API calls.
+are, if you have worked on a similar app.
+
+To get around the CORS issues, symlink the build directory to your jboss
+deployments folder as a war.
