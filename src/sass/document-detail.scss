@@ -1,4 +1,5 @@
 .document-detail {
+  position:relative;
   margin-top:3.5em;
   .title {
     text-transform:uppercase;
@@ -8,9 +9,28 @@
     text-overflow: ellipsis;
     white-space: nowrap;
   }
+  h3 {
+    margin:1em 0 .5em;
+  }
   p {
     font-weight:300;
     font-size:95%;
+    margin:0 0 .5em;
+  }
+
+  .metadata {
+    p {
+      margin:0 .5em 0 0;
+      padding:0 .5em 0 0;
+      display:inline-block;
+      border-right: 1px solid #ccc;
+      color:#333;
+      &:last-child {
+        border-right:0;
+        margin:0;
+        padding:0;
+      }
+    }
   }
 
   &.document-detail-leave {
@@ -28,5 +48,10 @@
 
   &.document-detail-enter.document-detail-enter-active {
     opacity: 0.01;
+  }
+
+  &.document-detail-fixed {
+    position: fixed !important;
+    top: -4em !important;
   }
 }

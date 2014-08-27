@@ -26,7 +26,6 @@ var Search = React.createClass({
 
   showDocument: function(documentId) {
     API.get.document(documentId, function(result) {
-      console.debug("document returned", result);
       this.setState({selectedDocument: result});
     }.bind(this));
   },

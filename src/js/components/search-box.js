@@ -57,10 +57,10 @@ var SearchBox = React.createClass({
             <legend><i className="fa fa-bell-o"></i> <em>Queries entered below, will not be visually parsed.</em></legend>
             <div className="pure-g">
               <div className="pure-u-md-4-5">
-                <input ref="queryText" className="queryText pure-input-1" type="text" placeholder="Enter a search query.." onKeyPress={this.handleKeyPress} />
+                <input ref="queryText" className="queryText pure-input-1" type="text" placeholder="&#xF002; Enter a search query..." onKeyPress={this.handleKeyPress} />
               </div>
               <div className="pure-u-md-1-5">
-                <button type="submit" className="pure-button pure-input-1 pure-button-primary" title="Execute Search"><i className={searchClass}></i></button>
+                <button type="submit" className="pure-button pure-input-1 pure-button-primary" title="Execute Search"><i className={searchClass}></i> Search</button>
               </div>
             </div>
           </fieldset>

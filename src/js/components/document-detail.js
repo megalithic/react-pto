@@ -2,6 +2,7 @@
 
 var React = require('react');
 var moment = require('moment');
+var jq     = require("jquery");
 
 var DocumentDetail = React.createClass({
   getInitialState: function() {
@@ -14,8 +15,17 @@ var DocumentDetail = React.createClass({
     return doc;
   },
 
-  componentDidUnmount: function() {
-    console.debug("unmounted document detail");
+  componentDidMount: function() {
+    window.addEventListener("scroll", function(evt) {
+      if (jq('body').scrollTop() > 434 || jq('html').scrollTop() > 434) {
+        if (jq(window).height() > 20) {
+          jq('.document-detail').addClass('document-detail-fixed');
+        }
+      }
+      else {
+        jq('.document-detail').removeClass('document-detail-fixed');
+      }
+    }.bind(this));
   },
 
   render: function() {
