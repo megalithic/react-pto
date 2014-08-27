@@ -2,6 +2,7 @@ var compass      = require('gulp-compass');
 var gulp         = require('gulp');
 var plumber      = require('gulp-plumber');
 var handleErrors = require('../util/handleErrors');
+var minifyCss    = require('gulp-minify-css');
 
 gulp.task('compass', function() {
   return gulp.src('./src/sass/*.scss')
@@ -11,5 +12,6 @@ gulp.task('compass', function() {
       css: 'build',
       sass: 'src/sass'
     }))
+    .pipe(minifyCss())
     .on('error', handleErrors);
 });

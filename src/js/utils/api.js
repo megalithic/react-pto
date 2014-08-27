@@ -1,7 +1,7 @@
 var jq = require('jquery');
 
 var mockUrl = "http://jsonplaceholder.typicode.com";
-var baseUrl = "http://192.168.1.82:8080/dirsearch";
+var baseUrl = "/dirsearch";
 var API = {
   get: {
     versions: function(callback) {
@@ -26,7 +26,6 @@ var API = {
         'Content-Type': 'application/json'
       },
       xhrFields: { withCredentials: false }
-      // contentType: "application/json",
     })
     .done(callback);
   },

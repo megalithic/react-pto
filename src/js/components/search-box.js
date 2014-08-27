@@ -27,7 +27,7 @@ var SearchBox = React.createClass({
     this.setState({executing: true});
     var queryText = this.queryText(evt.target.value);
     this.setState({query: { text: queryText }}, function() {
-      API.mock.search({query: { text: this.state.query.text }}, function(res) {
+      API.search({query: { text: this.state.query.text }}, function(res) {
         this.props.updateResults(res);
         this.setState({executing: false});
       }.bind(this));

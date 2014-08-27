@@ -1,10 +1,9 @@
 /** @jsx React.DOM */
 
 var React = require('react');
-var jq = require('jquery');
-var _ = require("underscore");
 var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 var cs = React.addons.classSet;
+var moment = require('moment');
 
 var SearchResult = React.createClass({
   getInitialState: function() {
@@ -13,6 +12,10 @@ var SearchResult = React.createClass({
 
   toggleFocused: function() {
     this.setState({ resultIsFocused: !this.state.resultIsFocused });
+  },
+
+  normalizedDocument: function(doc) {
+    return doc;
   },
 
   render: function() {
@@ -25,17 +28,22 @@ var SearchResult = React.createClass({
       "metadata-enter": this.state.resultIsFocused,
       "metadata-leave": !this.state.resultIsFocused
     });
-    var r = this.props.result;
+    var r = this.normalizedDocument(this.props.result);
 
     return (
       <dl className={focusedClass} onMouseEnter={this.toggleFocused} onMouseLeave={this.toggleFocused}>
-        <dt>{r.title}</dt>
+        <dt>{r.inventionTitle}</dt>
         <ReactCSSTransitionGroup transitionName="metadata">
           <dd className={metadataClass} key="1">
-            <p>{r.id}</p>
+            <p>{r.guid}</p>
+            <p>{moment(r.datePublished).format('L')}</p>
+            <p>{r.type}</p>
           </dd>
         </ReactCSSTransitionGroup>
-        <dd>{r.body}</dd>
+        <dd>{r.inventors_short}</dd>
+        <dd className="claims" dangerouslySetInnerHTML={{__html: r.claimsHtml}} />
+        <dd className="abstract" dangerouslySetInnerHTML={{__html: r.abstractHtml}} />
+        <dd className="description" dangerouslySetInnerHTML={{__html: r.descriptionHtml}} />
       </dl>
     );
   }

@@ -23,7 +23,7 @@ gulp.task('browserify', function() {
     // Add file extentions to make optional in your requires
     extensions: ['.js'],
     // Enable source maps!
-    debug: false
+    debug: true
   });
 
   var bundle = function() {

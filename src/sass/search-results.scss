@@ -1,7 +1,7 @@
 .search-results {
   dl {
     position:relative;
-    margin:1em -1em;
+    margin:2em -1em;
     padding:0 1em;
     dt {
       text-transform:capitalize;
@@ -13,7 +13,7 @@
     }
     dd {
       font-weight:300;
-      margin:0;
+      margin:.25em 0 0;
     }
     &.focused {
       background:#efefef;
@@ -25,6 +25,11 @@
   }
 
   .result {
+    @for $i from 1 through 360 {
+      .highlight#{$i} {
+        background-color: hsla($i, 100%, 80%, 1);
+      }
+    }
   }
 
 
@@ -36,9 +41,16 @@
     background:#eee;
     width:100%;
     p {
-      margin:0;
-      padding:0;
+      margin:0 .5em 0 0;
+      padding:0 .5em 0 0;
       display:inline-block;
+      border-right: 1px solid #ccc;
+      color:#333;
+      &:last-child {
+        border-right:0;
+        margin:0;
+        padding:0;
+      }
     }
   }
 

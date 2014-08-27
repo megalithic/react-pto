@@ -1,8 +1,7 @@
 /** @jsx React.DOM */
 
 var React = require('react');
-var jq = require('jquery');
-var _ = require("underscore");
+var helpers = require("../utils/helpers");
 var SearchResult = require("./search-result");
 
 var SearchResults = React.createClass({
@@ -18,11 +17,12 @@ var SearchResults = React.createClass({
 
   handleKeyPress: function(evt) {
     if(this.isNavigationKey(evt.which)) {
+      // do something vim navigation keys
     }
   },
 
   isNavigationKey: function(keyCode) {
-    var keyCodePresent = _.contains(this.allowedNavigationKeys, keyCode);
+    var keyCodePresent = this.allowedNavigationKeys.indexOf(keyCode);
     return keyCodePresent;
   },
 
@@ -38,22 +38,28 @@ var SearchResults = React.createClass({
 
   showResultsMessage: function() {
     var message = "";
-    if(_.isArray(this.props.valueLink.value) && this.props.valueLink.value.length === 0) {
+    if(helpers.isString(this.props.valueLink.value)) {
+      message = "";
+    } else if(Array.isArray(this.searchResults()) && this.searchResults().length === 0) {
       message = "No results found.";
-    } else if(_.isArray(this.props.valueLink.value) && this.props.valueLink.value.length > 0) {
-      message = "Found " + this.props.valueLink.value.length + " results.";
+    } else if(Array.isArray(this.searchResults()) && this.searchResults().length > 0) {
+      message = "Found " + this.searchResults().length + " results.";
     }
     return message;
   },
 
   searchResults: function() {
-    return _.isArray(this.props.valueLink.value) ? this.props.valueLink.value : [];
+    var resultsObject = helpers.isPresent(this.props.valueLink.value) ? this.props.valueLink.value : {};
+    var searchResults = Array.isArray(resultsObject.patents) ? resultsObject.patents : [];
+    return searchResults;
   },
 
   render: function() {
-    var results = this.searchResults().map(function(r, i) {
-      return (<SearchResult result={r} />);
-    });
+    if(helpers.isPresent(this.searchResults())) {
+      var results = this.searchResults().map(function(r, i) {
+        return (<SearchResult result={r} />);
+      });
+    }
 
     return (
       <div ref="searchResults" className="search-results">
