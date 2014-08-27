@@ -15,6 +15,9 @@
       font-weight:300;
       font-size:95%;
       margin:.5em 0 0;
+      &.inventors {
+        margin:0;
+      }
     }
     &.focused {
       background:#efefef;

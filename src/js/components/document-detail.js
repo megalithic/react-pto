@@ -30,6 +30,7 @@ var DocumentDetail = React.createClass({
 
   render: function() {
     var r = this.normalizedDocument(this.props.valueLink.value);
+    console.debug("selected doc:", r);
 
     return (
       <div className="document-detail">

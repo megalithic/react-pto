@@ -35,7 +35,7 @@ var Search = React.createClass({
     var gridClass = "pure-u-1-1";
     if(helpers.isPresent(this.state.selectedDocument)) {
       renderDocumentDetail = <DocumentDetail valueLink={this.linkState('selectedDocument')} />;
-      gridClass = "pure-u-1-2";
+      gridClass = "pure-u-1-3";
     }
 
     return (
@@ -44,7 +44,7 @@ var Search = React.createClass({
         <SearchBox updateResults={this.handleResults} />
         <div className="results-content pure-g">
           <div className={gridClass}><SearchResults valueLink={this.linkState('results')} showDocument={this.showDocument} /></div>
-          <div className={gridClass}>{renderDocumentDetail}</div>
+          <div className="pure-u-2-3">{renderDocumentDetail}</div>
         </div>
       </article>
     );

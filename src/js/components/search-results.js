@@ -16,13 +16,30 @@ var SearchResults = React.createClass({
   },
 
   handleKeyPress: function(evt) {
-    if(this.isNavigationKey(evt.which)) {
-      // do something vim navigation keys
+    var key = evt.which;
+    if(this.isNavigationKey(key)) {
+      switch(key) {
+        case 106:
+          console.debug("key should be j/106", key);
+          break;
+        case 107:
+          console.debug("key should be k/107", key);
+          break;
+        default:
+          console.debug("default", key);
+          break;
+      }
     }
   },
 
+  selectNextDocument: function(evt) {
+  },
+
+  selectPreviousDocument: function(evt) {
+  },
+
   isNavigationKey: function(keyCode) {
-    var keyCodePresent = this.allowedNavigationKeys.indexOf(keyCode);
+    var keyCodePresent = this.allowedNavigationKeys.indexOf(keyCode) > -1;
     return keyCodePresent;
   },
 

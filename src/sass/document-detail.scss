@@ -1,21 +1,33 @@
 .document-detail {
   position:relative;
-  margin-top:3.5em;
-  .title {
-    text-transform:uppercase;
-    position: relative;
-    padding-right: 4px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-  h3 {
-    margin:1em 0 .5em;
-  }
+  margin-top:1.3em;
+  margin-left:1em;
+  padding:1em;
+  padding-right:0;
+  background:#eee;
   p {
     font-weight:300;
     font-size:95%;
     margin:0 0 .5em;
+  }
+
+  h3 {
+    margin:1em 0 .5em;
+    text-transform:uppercase;
+    padding-right: 4px;
+    position: relative;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    p {
+      font-weight:bold;
+      font-size:100%;
+      margin:0;
+      position: relative;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
   }
 
   .metadata {
@@ -52,6 +64,7 @@
 
   &.document-detail-fixed {
     position: fixed !important;
-    top: -4em !important;
+    top: -.5em !important;
+    max-width:740px !important;
   }
 }
